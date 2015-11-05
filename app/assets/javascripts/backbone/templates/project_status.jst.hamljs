@@ -1,0 +1,19 @@
+.status-header-div.row
+  .col-md-2.status-header-title-div
+  .col-md-10
+    %table.status-header-table.table-bordered.table
+.status-done-div.row
+  .col-md-2.status-title-div
+    Done
+  .col-md-10
+    %table.status-done-table.table-bordered.table
+.status-in-progress-div.row
+  .col-md-2.status-title-div
+    In Progress
+  .col-md-10
+    %table.status-in-progress-table.table-bordered.table
+.status-new-div.row
+  .col-md-2.status-title-div
+    New
+  .col-md-10
+    %table.status-new-table.table-bordered.table

@@ -1,0 +1,13 @@
+.navbar.navbar-inverse.navbar-fixed-top{'role': "navigation"}
+  .container
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav{style: 'float: left;'}
+        %li
+          %a{href: '#', id: 'project-status'} Status
+        %li
+          %a{href: '#', id: 'project-assignment'} Assignment
+        %li
+          %a{href: '#', id: 'project-chart'} Chart
+      %ul.nav.navbar-nav{style: 'float: right;'}
+        %li
+          %a{href: '/users/sign_out', data-method:'delete'} Logout

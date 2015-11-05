@@ -1,0 +1,30 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  padding-top: 60px;
+}
+
+table{
+  border: 1px solid #000000;
+}
+
+th, td {
+  overflow: hidden;
+  width: 250px;
+  text-align: center;
+}
+
+.status-title-div{
+  text-align: center;
+  font-size: 30px;
+}
+
+.table-bordered{
+  margin: 10px;
+}
+
+.status-done-div, .status-in-progress-div, .status-new-div {
+  background-color: lightyellow;
+  border: 1px solid #000000;
+}

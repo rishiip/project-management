@@ -16,10 +16,13 @@ gem 'coffee-script'
 
 gem 'rails-backbone', git: "https://github.com/codebrew/backbone-rails.git"
 
+# Enables Haml as the templating engine
+gem 'haml-rails'
+
+gem 'ruby-haml-js'
+
 # User Authentication
 gem 'devise'
-
-gem 'cancancan'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
