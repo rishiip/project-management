@@ -33,4 +33,5 @@ class ProjectManagement.Views.ProjectManagementView extends Backbone.View
   loadProjectChartView: (e) ->
     e.preventDefault()
 
-    console.log 'chart'
+    pie_chart_view = new ProjectManagement.Views.PieChartView()
+    pie_chart_view.render()

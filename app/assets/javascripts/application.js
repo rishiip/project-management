@@ -20,3 +20,5 @@
 //= require backbone/project_management
 //= require_tree .
 //= require bootstrap
+//= require jsapi
+//= require GoogleChart
