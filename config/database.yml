@@ -1,0 +1,11 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  database: project_management_dev
+  username: root
+  password: root
+  host: localhost
+#  port: 3306
+
+development:
+  <<: *default
