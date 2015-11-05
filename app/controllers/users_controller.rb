@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.includes(:projects => [:todos]).select{ |user| user.id != current_user.id }
+    @users = User.includes(:todos).select{ |user| user.id != current_user.id }
 
     respond_to do |format|
       format.html

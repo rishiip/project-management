@@ -24,6 +24,6 @@ class ProjectManagement.Views.PieChartView extends Backbone.View
   createChart: (project) ->
     new Backbone.GoogleChart({
       chartType: 'PieChart',
-      dataTable: [['type', 'String'], ['done', project.todos_done_count], ['in progress', project.todos_in_progress_count], ['new', project.todos_new_count]],
+      dataTable: [['type', 'String'], ['New', project.todos_new_count], ['In Progress', project.todos_in_progress_count], ['Done', project.todos_done_count]],
       options: {'title': project.name}
     })
