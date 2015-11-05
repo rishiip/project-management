@@ -21,17 +21,32 @@
         - At any given point of time he will see a list of all developer list with todo in following format.
 
         <img src="public/status.png">
+        
+    7. For Developer, it is showing data project-wise
+    8. In Chart section, it is showing project wise pie chart for todo's status like 5 in New state, 10 in In Progress state
 
 #### Sample Data
 ##### Admin
-    hari@promobitech.com
+    hari@promobitech.com - test1234
 ##### Developers
-    arnab@promobitech.com
-    abhishek@promobitech.com
-    rana@promobitech.com
-    jalendra@promobitech.com
+    arnab@promobitech.com - test1234
+    abhishek@promobitech.com - test1234
+    rana@promobitech.com - test1234
+    jalendra@promobitech.com - test1234
     
-The Application has been deployed on [Heroku](https://project-management-rishi.herokuapp.com)
+### The Application has been deployed on [Heroku](https://project-management-rishi.herokuapp.com)
+
+## [Screen cast Demo](https://dl.dropbox.com/s/9pf31fx3x6fqhuv/project-management-demo.mp4)
+
+#### Steps for setup the application to your local machine
+- Clone it from [GitHub](https://github.com/rishiip/project-management.git)
+- cd project-management
+- bundle
+- rake db:create
+- rake db:migrate
+- rake db:seed
+- rails s
+- Open browser and open http://localhost:3000 url
 
 #### Future Enhancements
 - Admin can create project, todos and assign todo to specific developer
