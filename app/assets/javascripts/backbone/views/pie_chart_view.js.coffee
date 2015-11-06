@@ -13,17 +13,16 @@ class ProjectManagement.Views.PieChartView extends Backbone.View
     @generateChart()
 
   fetchProjects: ->
-    @project_collection = new ProjectManagement.Collections.ProjectsCollection()
-    @project_collection.fetch({ async:false })
-    @projects = _.first(@project_collection.models).get('projects')
+    @projects = new ProjectManagement.Collections.ProjectsCollection()
+    @projects.fetch({ async:false })
 
   generateChart: ->
     @$el.html('')
-    @$el.append(@createChart(project).render().el).append('<hr>') for project in @projects
+    @$el.append(@createChart(project).render().el).append('<hr>') for project in @projects.models
 
   createChart: (project) ->
     new Backbone.GoogleChart({
       chartType: 'PieChart',
-      dataTable: [['type', 'String'], ['New', project.todos_new_count], ['In Progress', project.todos_in_progress_count], ['Done', project.todos_done_count]],
-      options: {'title': project.name}
+      dataTable: [['type', 'String'], ['New', project.get('todos_new_count')], ['In Progress', project.get('todos_in_progress_count')], ['Done', project.get('todos_done_count')]],
+      options: {'title': project.get('name')}
     })

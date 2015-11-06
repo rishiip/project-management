@@ -1,6 +1,6 @@
 users = @users
 
-json.users users.each do |user|
+json.array! users.each do |user|
   json.extract! user, :id, :name, :admin
 
   json.todos_done user.todos.select{ |todo| todo.status == 'done' }.each do |todo|

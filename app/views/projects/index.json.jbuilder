@@ -1,6 +1,6 @@
 projects = @projects
 
-json.projects projects.each do |project|
+json.array! projects.each do |project|
   json.extract! project, :id, :name
 
   json.todos_done project.todos.select{ |todo| todo.status == 'done' }.each do |todo|

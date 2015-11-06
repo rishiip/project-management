@@ -16,13 +16,18 @@ class ProjectManagement.Views.ProjectManagementView extends Backbone.View
     @options = options || {}
 
   render: =>
+    @fetchUser()
     @$el.html(@template())
     @
+
+  fetchUser: ->
+    @user = new ProjectManagement.Models.User({id: parseInt($('#user_id').val())})
+    @user.fetch({ async:false })
 
   loadProjectStatusView: (e) ->
     e.preventDefault()
 
-    project_status_view = new ProjectManagement.Views.ProjectStatusView()
+    project_status_view = new ProjectManagement.Views.ProjectStatusView({ user: @user })
     project_status_view.render()
 
   loadProjectAssignmentView: (e) ->

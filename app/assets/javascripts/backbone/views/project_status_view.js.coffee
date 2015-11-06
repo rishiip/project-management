@@ -10,18 +10,13 @@ class ProjectManagement.Views.ProjectStatusView extends Backbone.View
     @options = options || {}
 
   render: ->
-    @fetchUser()
+    @user = @options.user
     @$el.html(@template())
     if @user.get('admin') then @generateDynamicTable('admin') else @generateDynamicTable('developer')
 
-  fetchUser: ->
-    @user = new ProjectManagement.Models.User({id: parseInt($('#user_id').val())})
-    @user.fetch({ async:false })
-
   fetchDevelopers: ->
-    @user_collection = new ProjectManagement.Collections.UsersCollection()
-    @user_collection.fetch({ async:false })
-    @developers = _.first(@user_collection.models).get('users')
+    @developers = new ProjectManagement.Collections.UsersCollection()
+    @developers.fetch({ async:false })
 
   generateDynamicTable: (role) ->
     @fetchDevelopers() if _.isEqual(role, 'admin')
@@ -45,24 +40,15 @@ class ProjectManagement.Views.ProjectStatusView extends Backbone.View
     while row++ < @getMaxRowLength(status, collection)
       col = 0
       while col++ < collection.length
-        selector = ".#{status}-sataus-row-#{row}-col-#{col}"
-        switch status
-          when 'done' then $(selector).text(collection[col-1].todos_done[row-1].name) if collection[col-1].todos_done[row-1] != undefined
-          when 'in-progress' then $(selector).text(collection[col-1].todos_in_progress[row-1].name) if collection[col-1].todos_in_progress[row-1] != undefined
-          when 'new' then $(selector).text(collection[col-1].todos_new[row-1].name) if collection[col-1].todos_new[row-1] != undefined
+        $(".#{status}-sataus-row-#{row}-col-#{col}").text(collection.models[col-1].get(@todo_status(status))[row-1].name) if collection.models[col-1].get(@todo_status(status))[row-1] != undefined
 
   getMaxRowLength: (status, collection) ->
     array_length = []
-    for model in collection
-      switch status
-        when 'done' then array_length.push model.todos_done.length
-        when 'in-progress' then array_length.push model.todos_in_progress.length
-        when 'new' then array_length.push model.todos_new.length
+    array_length.push model.get(@todo_status(status)).length for model in collection.models
     _.max(array_length)
 
   createHeader: (collection) ->
     @createTable('.status-header-table', 'header', 1, collection.length)
-    col = 0
-    while col++ < collection.length
-      selector = ".header-sataus-row-#{1}-col-#{col}"
-      $(selector).text(collection[col-1].name)
+    $(".header-sataus-row-#{1}-col-#{++col || col = 1}").text(model.get('name')) for model in collection.models
+
+  todo_status: (status) -> "todos_#{status.replace('-', '_')}"

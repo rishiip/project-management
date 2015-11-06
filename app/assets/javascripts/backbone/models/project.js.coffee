@@ -1,4 +1,4 @@
-class ProjectManagement.Models.Project extends Backbone.Model
+class ProjectManagement.Models.Project extends Backbone.RelationalModel
   urlRoot: '/projects'
 
 class ProjectManagement.Collections.ProjectsCollection extends Backbone.Collection

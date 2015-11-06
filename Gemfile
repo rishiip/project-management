@@ -16,6 +16,8 @@ gem 'coffee-script'
 
 gem 'rails-backbone', git: "https://github.com/codebrew/backbone-rails.git"
 
+gem 'backbone-relational-rails', '~> 0.10.0'
+
 # Enables Haml as the templating engine
 gem 'haml-rails'
 
