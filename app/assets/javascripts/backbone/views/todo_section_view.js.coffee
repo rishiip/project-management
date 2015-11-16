@@ -17,9 +17,9 @@ class ProjectManagement.Views.TodoSectionView extends Backbone.View
     @developers = @options.developers
 
   render: ->
+    @initUnassignedDevelopers() if @developers
     @$el.html(@template({ project: @project, unassigned_devs: @unassigned_devs }))
     if @developers
-      @initUnassignedDevelopers()
       @appendDevelopers()
       @bindCreateTodo()
       @bindAssignDevToProject()

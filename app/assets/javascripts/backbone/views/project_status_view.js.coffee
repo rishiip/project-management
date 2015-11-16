@@ -50,8 +50,7 @@ class ProjectManagement.Views.ProjectStatusView extends Backbone.View
   todo_status: (status) -> "todos_#{status.replace('-', '_')}"
 
   fetchUser: ->
-    @user = ProjectManagement.Models.User.find({id: parseInt($('#user_id').val())})
-    return unless _.isEqual(@user, null)
+    Backbone.Relational.store.reset()
     @user = new ProjectManagement.Models.User({id: parseInt($('#user_id').val())})
     @user.fetch({ async:false })
 
