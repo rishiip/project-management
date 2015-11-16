@@ -1,0 +1,2 @@
+%a{ class: 'project-name', href: '#'}
+  = project.get('name')

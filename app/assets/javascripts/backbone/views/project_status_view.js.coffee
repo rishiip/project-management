@@ -10,13 +10,9 @@ class ProjectManagement.Views.ProjectStatusView extends Backbone.View
     @options = options || {}
 
   render: ->
-    @user = @options.user
+    @fetchUser()
     @$el.html(@template())
     if @user.get('admin') then @generateDynamicTable('admin') else @generateDynamicTable('developer')
-
-  fetchDevelopers: ->
-    @developers = new ProjectManagement.Collections.UsersCollection()
-    @developers.fetch({ async:false })
 
   generateDynamicTable: (role) ->
     @fetchDevelopers() if _.isEqual(role, 'admin')
@@ -52,3 +48,13 @@ class ProjectManagement.Views.ProjectStatusView extends Backbone.View
     $(".header-sataus-row-#{1}-col-#{++col || col = 1}").text(model.get('name')) for model in collection.models
 
   todo_status: (status) -> "todos_#{status.replace('-', '_')}"
+
+  fetchUser: ->
+    @user = ProjectManagement.Models.User.find({id: parseInt($('#user_id').val())})
+    return unless _.isEqual(@user, null)
+    @user = new ProjectManagement.Models.User({id: parseInt($('#user_id').val())})
+    @user.fetch({ async:false })
+
+  fetchDevelopers: ->
+    @developers = new ProjectManagement.Collections.UsersCollection()
+    @developers.fetch({ async:false })

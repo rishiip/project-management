@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :users, only: [:index, :show]
-  resources :projects, only: [:index]
+  resources :projects, only: [:index, :create]
+  resources :todos, only: [:create]
+
+  get 'projects/:id/assign_project/:user_id' => 'projects#assign_project'
 
   # You can have the root of your site routed with "root"
   root 'users#index'

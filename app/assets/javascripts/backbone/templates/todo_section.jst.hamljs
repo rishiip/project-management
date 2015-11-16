@@ -1,0 +1,28 @@
+.todo-title-view
+  Todo List for #{project.get('name')} Project
+.todo-developers-view.row
+  .col-md-2
+    Developers :
+  .col-md-10.developer-names
+.todo-list-view
+.todo-create-view.row
+  .col-md-6
+    %input{ type: 'text', class: 'new-todo form-control', placeholder: 'Describe Todo' }
+  .col-md-4
+    %select{ class: 'developer-select form-control' }
+      %option{ value: 0, selected: true } Select Developer
+      - project.get('users').each(function(user) {
+      %option{ value: user.get('id') }= user.get('name')
+      - })
+  .col-md-2
+    %input{ type: 'button', class: 'btn-new-todo form-control', disabled: true, value: 'Create' }
+.todo-developers-select-view.row
+  .col-md-6.select-developer-title
+    Select Developer To Add :
+  .col-md-4
+    %select{ class: 'unassigned-developer-select form-control' }
+      %option{ value: 0, selected: true } Select Developer
+      :each user in unassigned_devs
+        %option{ value: user.get('id') }= user.get('name')
+  .col-md-2
+    %input{ type: 'button', class: 'btn-add-developer form-control', disabled: true, value: 'Add' }

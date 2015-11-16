@@ -1,0 +1,60 @@
+.project-title-view, .todo-title-view {
+  padding: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.project-list-view {
+  min-height: 420px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.todo-list-view {
+  min-height: 380px;
+  max-height: 380px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.project-list-view {
+  margin: 20px;
+}
+
+.todo-list-view, .todo-developers-view, .todo-create-view, .todo-developers-select-view {
+  margin: 10px !important;
+}
+
+.project-create-view {
+  padding-left: 20px !important;
+}
+
+.project-row {
+  padding-left: 5%;
+  margin: 10px;
+  font-size: 25px;
+  font-family: serif;
+}
+
+.todo-row, .todo-developers-view {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.select-developer-title {
+  font-size: 15px;
+  text-align: right;
+}
+
+.todo-name-row, .select-developer-title {
+  font-family: cursive;
+}
+
+.developer-name {
+  border-left: 3px solid;
+  text-align: right;
+}

@@ -1,0 +1,5 @@
+.row.todo-name-row
+  .col-md-8
+    = todo.get('name')
+  .col-md-4.developer-name
+    = todo.get('user_name')

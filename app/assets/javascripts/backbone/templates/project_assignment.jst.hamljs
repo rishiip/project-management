@@ -1,0 +1,13 @@
+.row
+  .col-md-5
+    .project-view
+      .project-title-view
+        Project List
+      .project-list-view
+      .project-create-view.row
+        .col-md-6
+          %input{ type: 'text', class: 'new-project form-control', placeholder: 'Enter Project Name' }
+        .col-md-4
+          %input{ type: 'button', class: 'btn-new-project form-control', disabled: true, value: 'Create' }
+  .col-md-7
+    .todo-view
