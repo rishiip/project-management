@@ -36,7 +36,7 @@
     
 ### The Application has been deployed on [Heroku](https://project-management-rishi.herokuapp.com)
 
-## [Screen cast Demo](https://dl.dropbox.com/s/9pf31fx3x6fqhuv/project-management-demo.mp4)
+## [Screen cast Demo](https://dl.dropbox.com/s/ub946ottaq3p25k/project-management.mp4)
 
 #### Steps for setup the application to your local machine
 - Clone it from [GitHub](https://github.com/rishiip/project-management.git)
@@ -47,7 +47,3 @@
 - rake db:seed
 - rails s
 - Open browser and open http://localhost:3000 url
-
-#### Future Enhancements
-- Admin can create project, todos and assign todo to specific developer
-- Developer can change status for todo to `In Progress` or `Done`

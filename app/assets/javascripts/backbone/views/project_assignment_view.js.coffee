@@ -32,8 +32,8 @@ class ProjectManagement.Views.ProjectAssignmentView extends Backbone.View
     @$('.new-project').val('')
 
   appendProjects: ->
-    @projects = if @user.get('admin') then @projects.models else @user.get('projects').models
-    @appendSingleProject(project) for project in @projects
+    @projects = if @user.get('admin') then @projects else @user.get('projects')
+    @appendSingleProject(project) for project in @projects.models
 
   appendSingleProject: (project) ->
     project_row_view = new ProjectManagement.Views.ProjectRowView({ project: project, developers: @developers })
