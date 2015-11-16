@@ -15,9 +15,11 @@ class ProjectManagement.Views.ProjectAssignmentView extends Backbone.View
     @options = options || {}
 
   render: ->
-    @fetchProjects()
-    @fetchDevelopers()
-    @$el.html(@template())
+    @fetchUser()
+    if @user.get('admin')
+      @fetchProjects()
+      @fetchDevelopers()
+    @$el.html(@template(admin: @user.get('admin')))
     @appendProjects()
 
   createProject: ->
@@ -30,7 +32,8 @@ class ProjectManagement.Views.ProjectAssignmentView extends Backbone.View
     @$('.new-project').val('')
 
   appendProjects: ->
-    @appendSingleProject(project) for project in @projects.models
+    @projects = if @user.get('admin') then @projects.models else @user.get('projects').models
+    @appendSingleProject(project) for project in @projects
 
   appendSingleProject: (project) ->
     project_row_view = new ProjectManagement.Views.ProjectRowView({ project: project, developers: @developers })
@@ -47,3 +50,9 @@ class ProjectManagement.Views.ProjectAssignmentView extends Backbone.View
   fetchDevelopers: ->
     @developers = new ProjectManagement.Collections.UsersCollection()
     @developers.fetch({ async:false })
+
+  fetchUser: ->
+    @user = ProjectManagement.Models.User.find({id: parseInt($('#user_id').val())})
+    return unless _.isEqual(@user, null)
+    @user = new ProjectManagement.Models.User({id: parseInt($('#user_id').val())})
+    @user.fetch({ async:false })

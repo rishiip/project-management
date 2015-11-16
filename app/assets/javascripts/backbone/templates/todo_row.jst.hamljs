@@ -2,4 +2,18 @@
   .col-md-8
     = todo.get('name')
   .col-md-4.developer-name
-    = todo.get('user_name')
+    :if todo.get('user_name') != undefined
+      = todo.get('user_name')
+    :else
+      %select{ class: 'status-select form-control' }
+        :if todo.get('status') == 'new'
+          %option{ value: 0, selected: true } Change Status
+          %option{ value: 'in progress' } In Progress
+          %option{ value: 'done' } Done
+        :else
+          :if todo.get('status') == 'in progress'
+            %option{ value: 'in progress' selected: true } In Progress
+            %option{ value: 'done' } Done
+          :else
+            %option{ value: 'in progress' } In Progress
+            %option{ value: 'done' selected: true } Done

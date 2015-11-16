@@ -12,4 +12,13 @@ class ProjectManagement.Views.TodoRowView extends Backbone.View
 
   render: =>
     @$el.html(@template( todo: @todo ))
+    @bindStatusSelect() if _.isEqual(@todo.get('user_name'), undefined)
     @
+
+  bindStatusSelect: -> @$('.status-select').bind 'change', => @changeStatus()
+
+  changeStatus: ->
+    @$(".status-select option[value='0']").remove()
+    status = @$(".status-select").val()
+    @todo.set('status': status)
+    @todo.save({ async: false })

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   resources :projects, only: [:index, :create]
-  resources :todos, only: [:create]
+  resources :todos, only: [:create, :update]
 
   get 'projects/:id/assign_project/:user_id' => 'projects#assign_project'
 

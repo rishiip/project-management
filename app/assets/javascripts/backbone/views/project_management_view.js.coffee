@@ -17,6 +17,7 @@ class ProjectManagement.Views.ProjectManagementView extends Backbone.View
 
   render: =>
     @$el.html(@template())
+    @$('a#project-assignment').text('Status Modification') unless _.isEqual($('#admin').val(), 'true')
     @
 
   loadProjectStatusView: (e) ->

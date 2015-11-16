@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   before_action :authenticate_user!
-  before_filter :todo_params, only: [:create]
+  before_filter :todo_params, only: [:create, :update]
 
   def create
     @todo = Todo.create(params[:todo])
@@ -9,6 +9,13 @@ class TodosController < ApplicationController
     respond_to do |format|
       format.json
     end
+  end
+
+  def update
+    todo = Todo.find_by_id(todo_params[:id])
+    todo.update_attributes!(todo_params)
+
+    render json: todo
   end
 
   private
